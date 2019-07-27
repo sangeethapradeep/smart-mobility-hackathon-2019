@@ -6,10 +6,10 @@
 -->
 <ion-header>
     <ion-navbar>
-        Choose how do you want to reach pickup Location
+        Your journey to pick up location - {{rideStartZone.name}}
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <here-map [interactiveMap]="true" [currentLocMarkerRequired]="true" [mapControlsRequired]="true" [lat]="lat" [lng]="lng"></here-map>
+    <here-map [interactiveMap]="true" [destination]="rideStartZone" [transitMode]="transitMode" [currentLocMarkerRequired]="true" [mapControlsRequired]="true" [lat]="lat" [lng]="lng"></here-map>
 </ion-content>

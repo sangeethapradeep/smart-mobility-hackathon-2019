@@ -6,7 +6,7 @@
 -->
 <ion-header>
     <ion-navbar>
-        <ion-title>Vehicles in Dadar</ion-title>
+        <ion-title>Vehicles in {{sourceZone.name}}</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -22,7 +22,7 @@
                 <ion-badge>Car Pooling</ion-badge>
             </ion-item>
             <ion-item-options side="right">
-                <button ion-button color="secondary" (click)="bookVehicle(i)">
+                <button ion-button color="secondary" (click)="bookSelectedVehicle(i)">
                       <ion-icon name="car"></ion-icon>
                       Book
                     </button>

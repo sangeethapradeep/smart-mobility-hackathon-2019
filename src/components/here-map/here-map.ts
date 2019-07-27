@@ -37,6 +37,12 @@ export class HereMapComponent implements OnInit {
   @Input()
   markers: ZoneData[];
 
+  @Input()
+  destination: ZoneData;
+
+  @Input()
+  transitMode: string;
+
   renderedMap: any;
 
   constructor(public hereMapProvider: HereMapProvider) {
@@ -62,7 +68,15 @@ export class HereMapComponent implements OnInit {
     }
 
     if (!!this.markers && this.markers.length > 0) {
-        this.hereMapProvider.plotMarkersOnMap(this.markers);
+        this.hereMapProvider.plotMarkersOnMap(this.markers);        
+    }
+
+    if(!!this.destination){
+      let source = {
+        lat: this.lat,
+        lng: this.lng
+      }
+      this.hereMapProvider.plotRouteFromAtoB(source, this.destination,this.transitMode);
     }
   }
 

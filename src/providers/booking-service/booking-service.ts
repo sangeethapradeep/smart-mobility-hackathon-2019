@@ -41,12 +41,10 @@ nearestZones: ZoneData[] =  [
   constructor(public http: HttpClient) {
   }
 
-  public getNearestZones(): Observable<ZoneData[]> {
+  public getZones(): Observable<ZoneData[]> {
   return of(this.nearestZones);
 }
 
-  public getZones(): Observable<ZoneData[]>{
-    return of(this.nearestZones);
-  }
+  
 
 }

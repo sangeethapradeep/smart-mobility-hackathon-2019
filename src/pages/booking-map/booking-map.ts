@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { DestinationSelectModalPage } from '../destination-select-modal/destination-select-modal';
 import { ZoneData } from '../../models/common';
 import { NearestZonesMapPage } from '../nearest-zones-map/nearest-zones-map';
@@ -24,10 +24,12 @@ export class BookingMapPage {
   dest_zone: ZoneData = { id: 0,name:'', location:{lat:0.0,lng:0.0} };
   lat: string = GlobalConstants.CURRENT_LOC_LAT;
   lng: string = GlobalConstants.CURRENT_LOC_LNG;
+  loader: any;
   constructor(private navCtrl: NavController, 
               private navParams: NavParams,
               private modalCtrl: ModalController,
-              private bookingServiceProvider: BookingServiceProvider) {
+              private bookingServiceProvider: BookingServiceProvider,
+              private loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -42,10 +44,10 @@ export class BookingMapPage {
       if(!selected_dest) return;
       this.dest_zone = selected_dest;
 
-      this.bookingServiceProvider.getNearestZones()
+      this.bookingServiceProvider.getZones()
       .subscribe(zones => {
-        // this.navCtrl.push(NearestZonesMapPage, {zonesToPlot: zones});
-        this.navCtrl.push(VehicleListPage);
+        this.navCtrl.push(NearestZonesMapPage, {zonesToPlot: zones, destZones: this.dest_zone});
+        // this.navCtrl.push(VehicleListPage, {'dest_zone': this.dest_zone});
       })
 
      
@@ -56,5 +58,18 @@ export class BookingMapPage {
     });
     modal.present();
   }
+
+  private startLoader(){
+    this.loader = this.loadingCtrl.create({
+      content: "Fetching the nearest zone.."
+    })
+    this.loader.present();
+  }
+
+  private killLoader(){
+    this.loader.dismiss();
+  }
+
+ 
 
 }

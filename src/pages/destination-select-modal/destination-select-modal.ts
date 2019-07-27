@@ -48,7 +48,7 @@ export class DestinationSelectModalPage {
    this.bookingServiceProvider.getZones()
    .subscribe(zones => {
      this.available_zones = zones;
-   })
+   });
    
   }
   
