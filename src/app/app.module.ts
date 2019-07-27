@@ -17,6 +17,7 @@ import { BookingServiceProvider } from '../providers/booking-service/booking-ser
 import { HttpClientModule } from '@angular/common/http';
 import { VehicleListPage } from '../pages/vehicle-list/vehicle-list';
 import { FirstMileResoltutionPage } from '../pages/first-mile-resoltution/first-mile-resoltution';
+import { TripMapPage } from '../pages/trip-map/trip-map';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FirstMileResoltutionPage } from '../pages/first-mile-resoltution/first-
     DestinationSelectModalPage,
     NearestZonesMapPage,
     VehicleListPage,
-    FirstMileResoltutionPage
+    FirstMileResoltutionPage,
+    TripMapPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { FirstMileResoltutionPage } from '../pages/first-mile-resoltution/first-
     DestinationSelectModalPage,
     NearestZonesMapPage,
     VehicleListPage,
-    FirstMileResoltutionPage
+    FirstMileResoltutionPage,
+    TripMapPage
   ],
   providers: [
     StatusBar,
